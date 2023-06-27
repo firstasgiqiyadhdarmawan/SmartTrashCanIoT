@@ -1,0 +1,22 @@
+body::-webkit-scrollbar{
+    display: none;
+}
+.card{
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+}
+.status-capacity{
+  padding: 5px 10px 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.full{
+  background-color: red;
+  color: white;
+}
+.available{
+  background-color: #76BA1B;
+  color: white;
+}

@@ -1,0 +1,77 @@
+{{ define "content" }}
+<div class="mt-4">
+  <div class="container">
+    <h3 class="text-secondary mb-4">Smart Trash Can Website</h3>
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <div class="card mb-3" style="max-width: 100%; height: 23rem;">
+          <div class="card-body">
+            <h5 class="card-title text-secondary">Recent Capacity</h5>
+            <div class="d-flex justify-content-center align-content-center" style="margin-top: 4.5rem;">
+              <span style="font-size: 80px; font-weight: bold;" id="sisa">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-5">
+        <div class="card mb-3" style="max-width: 100%; height: 23rem;">
+          <div class="card-body">
+            <h5 class="card-title text-secondary mb-4">Capacity History</h5>
+            <div style="width: 100%;">  
+              <canvas id="Line"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card mb-3" style="max-width: 100%; height: 23rem;">
+          <div class="card-body">
+            <h5 class="card-title text-secondary mb-3">Recent Capacity Chart</h5>
+            <center>
+              <div style="width: 75%;">  
+                <canvas id="Donat"></canvas>
+              </div>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="col-12 col-md-12">
+        <div class="card mb-3" style="max-width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title text-secondary mb-4">Log Capacity</h5>
+            <table id="logHistory" class="table table-striped" style="width:100%">
+              <thead>
+                <tr width="200px" >
+                  <th scope="col">Kode Device</th>
+                  <th scope="col">Nama Device</th>
+                  <th scope="col">Tanggal Update</th>
+                  <th scope="col">Kapasitas</th>
+                  <th scope="col">Status</th>
+              </tr>
+              </thead>
+              <tbody>
+                {{ range .history }}
+                  <tr>
+                      <td>{{ .Device_id }}</td>
+                      <td>{{ .Device_name }}</td>
+                      <td>{{ .Date_updated }}</td>
+                      <td>{{ .Capacity }}%</td>
+                      {{ if eq .Status_device "Penuh" }}
+                        <td><span class="status-capacity full">{{ .Status_device }}</span></td>
+                      {{ else }}
+                        <td><span class="status-capacity available">{{ .Status_device }}</span></td>
+                      {{ end }}
+                  </tr>
+                {{ end }}
+              </tbody>
+            </table>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
